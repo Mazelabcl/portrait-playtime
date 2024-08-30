@@ -9,6 +9,7 @@ const SecretMenu = ({ onUpload }) => {
   const [buttonImage, setButtonImage] = useState(null);
   const [video, setVideo] = useState(null);
   const [generatedImage, setGeneratedImage] = useState(null);
+  const [pregunta, setPregunta] = useState('');
 
   const handleUpload = (e, type) => {
     const file = e.target.files[0];
@@ -35,7 +36,7 @@ const SecretMenu = ({ onUpload }) => {
   };
 
   const handleSave = () => {
-    onUpload({ backgroundImage, buttonImage, video, generatedImage });
+    onUpload({ backgroundImage, buttonImage, video, generatedImage, pregunta });
     setIsOpen(false);
   };
 
@@ -55,8 +56,11 @@ const SecretMenu = ({ onUpload }) => {
           
           <Label htmlFor="generated-upload" className="block mb-1">Generated Image</Label>
           <Input id="generated-upload" type="file" onChange={(e) => handleUpload(e, 'generated')} accept="image/*" className="mb-2" />
-          
-          <Button onClick={handleSave} className="w-full">Save</Button>
+
+          <Label htmlFor="pregunta-input" className="block mb-1">Pregunta</Label>
+          <Input id="pregunta-input" type="text" value={pregunta} onChange={(e) => setPregunta(e.target.value)} className="mb-2" />
+
+          <Button onClick={() => handleSave()} className="w-full">Save</Button>
         </div>
       )}
     </div>

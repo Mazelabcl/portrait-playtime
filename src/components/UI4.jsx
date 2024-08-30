@@ -4,22 +4,14 @@ import { Progress } from "@/components/ui/progress";
 import { motion } from 'framer-motion';
 
 const UI4 = ({ assets }) => {
-  const [progress, setProgress] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prev) => {
-        if (prev === 100) {
-          clearInterval(timer);
-          navigate('/ui5');
-          return 100;
-        }
-        return prev + 10;
-      });
-    }, 500);
+    const timer = setTimeout(() => {
+      navigate('/ui5');
+    }, 5000);
 
-    return () => clearInterval(timer);
+    return () => clearTimeout(timer);
   }, [navigate]);
 
   return (
@@ -32,17 +24,16 @@ const UI4 = ({ assets }) => {
       transition={{ duration: 0.5 }}
     >
       <motion.div 
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4"
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <p className="text-2xl text-white text-center mb-4">Generating image...</p>
-        <Progress value={progress} className="w-full" />
+        <p className="text-4xl text-white text-center mb-4">Generating image...</p>
       </motion.div>
       {assets.video && (
         <motion.video 
-          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/4 h-auto"
+          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[56.25%] h-auto"
           src={assets.video}
           autoPlay
           loop
@@ -51,8 +42,7 @@ const UI4 = ({ assets }) => {
           transition={{ duration: 0.5, delay: 0.2 }}
           style={{
             boxShadow: '0 -4px 6px rgba(0, 0, 0, 0.1)',
-            borderTopLeftRadius: '16px',
-            borderTopRightRadius: '16px',
+            borderRadius: '16px',
           }}
         />
       )}

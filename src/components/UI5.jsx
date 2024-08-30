@@ -18,7 +18,9 @@ const UI5 = ({ assets }) => {
 
   const handleClick = () => {
     setShowImage(false);
-    setTimeout(() => navigate('/'), 500);
+    setTimeout(() => {
+      navigate('/');
+    }, 1000);
   };
 
   return (
@@ -37,7 +39,13 @@ const UI5 = ({ assets }) => {
             key="image"
             initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            exit={{ opacity: 0, scale: 0.8, rotate: 10 }}
+            exit={{ 
+              opacity: 0, 
+              scale: 1.2, 
+              rotate: 10, 
+              filter: 'blur(20px)',
+              transition: { duration: 1, ease: "easeInOut" }
+            }}
             transition={{ duration: 0.5, type: "spring", stiffness: 200, damping: 20 }}
             className="absolute inset-0 flex items-center justify-center"
           >
