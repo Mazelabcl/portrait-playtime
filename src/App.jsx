@@ -15,7 +15,8 @@ const App = () => {
   const [assets, setAssets] = useState({
     backgroundImage: "/placeholder.svg",
     buttonImage: "/placeholder.svg",
-    video: null
+    video: null,
+    generatedImage: null
   });
 
   return (
