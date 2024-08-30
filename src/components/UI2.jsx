@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 const UI2 = ({ assets }) => {
   const navigate = useNavigate();
+  const videoRef = useRef(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate('/ui3');
-    }, 5000);
+    }, 13000);
 
     return () => clearTimeout(timer);
   }, [navigate]);
@@ -22,10 +23,11 @@ const UI2 = ({ assets }) => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {assets.video && (
+      {assets.video1 && (
         <motion.video 
-          className="absolute top-[1200px] left-[140px] transform -translate-y-1/2 w-[75%] h-auto"
-          src={assets.video}
+          ref={videoRef}
+          className="absolute top-[1170px] left-[140px] transform -translate-y-1/2 w-[75%] h-auto"
+          src={assets.video1}
           autoPlay
           loop
           initial={{ y: 100, opacity: 0 }}
