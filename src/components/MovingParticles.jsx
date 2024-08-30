@@ -2,15 +2,15 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const MovingParticles = () => {
-  const particleCount = 50;
+  const particleCount = 100;
 
   const generateParticles = () => {
     return Array.from({ length: particleCount }).map((_, index) => ({
       id: index,
-      size: Math.random() * 20 + 10,
+      size: Math.random() * 30 + 5,
       x: Math.random() * 1080,
       y: Math.random() * 1920,
-      duration: Math.random() * 30 + 20,
+      duration: Math.random() * 40 + 10,
     }));
   };
 
@@ -19,7 +19,7 @@ const MovingParticles = () => {
       {generateParticles().map((particle) => (
         <motion.div
           key={particle.id}
-          className="absolute rounded-full bg-white bg-opacity-10"
+          className="absolute rounded-full bg-white"
           style={{
             width: particle.size,
             height: particle.size,
@@ -27,10 +27,11 @@ const MovingParticles = () => {
             top: particle.y,
           }}
           animate={{
-            x: [0, Math.random() * 400 - 200],
-            y: [0, Math.random() * 400 - 200],
-            scale: [1, 1.5, 1],
-            opacity: [0.3, 0.7, 0.3],
+            x: [0, Math.random() * 600 - 300],
+            y: [0, Math.random() * 600 - 300],
+            scale: [1, 2, 0.5, 1.5, 1],
+            opacity: [0.1, 0.5, 0.1, 0.8, 0.1],
+            rotate: [0, 180, 360],
           }}
           transition={{
             duration: particle.duration,

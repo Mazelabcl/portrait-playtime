@@ -9,7 +9,10 @@ const SecretMenu = ({ onUpload }) => {
   const [buttonImage, setButtonImage] = useState(null);
   const [video, setVideo] = useState(null);
   const [generatedImage, setGeneratedImage] = useState(null);
+  const [generatedImage2, setGeneratedImage2] = useState(null);
   const [pregunta, setPregunta] = useState('');
+  const [transcription1, setTranscription1] = useState('');
+  const [transcription2, setTranscription2] = useState('');
 
   const handleUpload = (e, type) => {
     const file = e.target.files[0];
@@ -29,6 +32,9 @@ const SecretMenu = ({ onUpload }) => {
           case 'generated':
             setGeneratedImage(reader.result);
             break;
+          case 'generated2':
+            setGeneratedImage2(reader.result);
+            break;
         }
       };
       reader.readAsDataURL(file);
@@ -36,7 +42,7 @@ const SecretMenu = ({ onUpload }) => {
   };
 
   const handleSave = () => {
-    onUpload({ backgroundImage, buttonImage, video, generatedImage, pregunta });
+    onUpload({ backgroundImage, buttonImage, video, generatedImage, generatedImage2, pregunta, transcription1, transcription2 });
     setIsOpen(false);
   };
 
@@ -59,6 +65,15 @@ const SecretMenu = ({ onUpload }) => {
 
           <Label htmlFor="pregunta-input" className="block mb-1">Pregunta</Label>
           <Input id="pregunta-input" type="text" value={pregunta} onChange={(e) => setPregunta(e.target.value)} className="mb-2" />
+
+          <Label htmlFor="transcription1-input" className="block mb-1">Transcription 1</Label>
+          <Input id="transcription1-input" type="text" value={transcription1} onChange={(e) => setTranscription1(e.target.value)} className="mb-2" />
+
+          <Label htmlFor="transcription2-input" className="block mb-1">Transcription 2</Label>
+          <Input id="transcription2-input" type="text" value={transcription2} onChange={(e) => setTranscription2(e.target.value)} className="mb-2" />
+
+          <Label htmlFor="generated-upload2" className="block mb-1">Generated Image 2</Label>
+          <Input id="generated-upload2" type="file" onChange={(e) => handleUpload(e, 'generated2')} accept="image/*" className="mb-2" />
 
           <Button onClick={() => handleSave()} className="w-full">Save</Button>
         </div>

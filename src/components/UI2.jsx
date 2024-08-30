@@ -24,7 +24,7 @@ const UI2 = ({ assets }) => {
     >
       {assets.video && (
         <motion.video 
-          className="absolute top-[1200px] left-[140px] transform -translate-y-1/2 w-[75%] h-auto"
+          className="absolute top-[1150px] left-[-260px] transform -translate-y-1/2 w-[75%] h-auto"
           src={assets.video}
           autoPlay
           loop
@@ -37,6 +37,14 @@ const UI2 = ({ assets }) => {
           }}
         />
       )}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.7 }}
+        className="absolute top-[800px] left-1/2 transform -translate-x-1/2 text-3xl font-bold text-white text-center p-[60px] bg-black bg-opacity-50 rounded-lg max-w-[80%]"
+      >
+        {assets.transcription1 || "No transcription set"}
+      </motion.div>
     </motion.div>
   );
 };
