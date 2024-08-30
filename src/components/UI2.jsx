@@ -27,11 +27,10 @@ const UI2 = ({ assets }) => {
       </div>
       {assets.video && (
         <video 
-          className="absolute bottom-1/4 left-1/2 transform -translate-x-1/2 w-3/4 h-auto"
+          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-auto"
           src={assets.video}
           autoPlay
           loop
-          muted
         />
       )}
     </div>

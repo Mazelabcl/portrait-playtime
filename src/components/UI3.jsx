@@ -40,15 +40,7 @@ const UI3 = ({ assets }) => {
           </Button>
         </motion.div>
       </div>
-      {assets.video && (
-        <video 
-          className="absolute top-1/4 left-1/2 transform -translate-x-1/2 w-3/4 h-auto"
-          src={assets.video}
-          autoPlay
-          loop
-          muted
-        />
-      )}
+      {/* Video removed from this screen */}
     </div>
   );
 };
