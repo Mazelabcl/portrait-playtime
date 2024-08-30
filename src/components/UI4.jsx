@@ -46,7 +46,7 @@ const UI4 = ({ assets }) => {
       {assets.video2 && !showProgress && (
         <motion.video 
           ref={videoRef}
-          className="absolute top-[1170px] left-[140px] transform -translate-y-1/2 w-[75%] h-auto"
+          className="absolute top-[1020px] left-[140px] transform -translate-y-1/2 w-[75%] h-auto"
           src={assets.video2}
           autoPlay
           initial={{ y: 100, opacity: 0 }}
@@ -60,12 +60,12 @@ const UI4 = ({ assets }) => {
       )}
       {showProgress && (
         <motion.div 
-          className="absolute top-[1170px] left-[140px] transform -translate-y-1/2 w-[75%]"
+          className="absolute top-[1020px] left-[140px] transform -translate-y-1/2 w-[75%]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
-          <Progress value={progress} className="w-full h-8" />
+          <Progress value={progress} className="w-full h-8 bg-white" />
         </motion.div>
       )}
     </motion.div>

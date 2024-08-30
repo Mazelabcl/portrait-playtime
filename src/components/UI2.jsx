@@ -26,10 +26,9 @@ const UI2 = ({ assets }) => {
       {assets.video1 && (
         <motion.video 
           ref={videoRef}
-          className="absolute top-[1170px] left-[140px] transform -translate-y-1/2 w-[75%] h-auto"
+          className="absolute top-[1020px] left-[140px] transform -translate-y-1/2 w-[75%] h-auto"
           src={assets.video1}
           autoPlay
-          loop
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
