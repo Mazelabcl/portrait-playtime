@@ -24,7 +24,7 @@ const UI4 = ({ assets }) => {
     >
       {assets.video && (
         <motion.video 
-          className="absolute bottom-1/4 left-1/2 transform -translate-x-1/2 w-[75%] h-auto"
+          className="absolute top-[1200px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[75%] h-auto"
           src={assets.video}
           autoPlay
           loop

@@ -25,7 +25,7 @@ const App = () => {
       <TooltipProvider>
         <Toaster />
         <BrowserRouter>
-          <div className="relative">
+          <div className="relative w-[1080px] h-[1920px] overflow-hidden">
             <MovingParticles />
             <Routes>
               <Route path="/" element={<UI1 assets={assets} setAssets={setAssets} />} />

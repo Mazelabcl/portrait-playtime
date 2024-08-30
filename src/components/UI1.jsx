@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import SecretMenu from './SecretMenu';
 import { motion } from 'framer-motion';
+import { Button } from "@/components/ui/button";
 
 const UI1 = ({ assets, setAssets }) => {
   const navigate = useNavigate();
@@ -33,21 +34,12 @@ const UI1 = ({ assets, setAssets }) => {
             repeatType: 'loop'
           }}
         >
-          <motion.img
-            src={assets.buttonImage}
-            alt="Start Button"
+          <Button
             onClick={() => navigate('/ui2')}
-            className="cursor-pointer"
-            style={{
-              width: 'auto',
-              height: 'auto',
-              maxWidth: '400px',
-              maxHeight: '200px',
-            }}
-            whileHover={{
-              filter: 'brightness(1.2)',
-            }}
-          />
+            className="w-[400px] h-[200px] text-4xl font-bold text-blue-900 bg-white rounded-full hover:bg-blue-100 transition-colors duration-300"
+          >
+            INICIAR
+          </Button>
         </motion.div>
       </div>
     </motion.div>
