@@ -22,9 +22,18 @@ const UI2 = ({ assets }) => {
 
   return (
     <div className="relative w-[1080px] h-[1920px]" style={{ backgroundImage: `url(${assets.backgroundImage})`, backgroundSize: 'cover' }}>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-9xl font-bold text-white">
+      <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-9xl font-bold text-white">
         {countdown}
       </div>
+      {assets.video && (
+        <video 
+          className="absolute bottom-1/4 left-1/2 transform -translate-x-1/2 w-3/4 h-auto"
+          src={assets.video}
+          autoPlay
+          loop
+          muted
+        />
+      )}
     </div>
   );
 };

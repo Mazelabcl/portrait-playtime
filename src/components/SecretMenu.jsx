@@ -43,7 +43,7 @@ const SecretMenu = ({ onUpload }) => {
     <div className="absolute top-0 left-0 m-4 z-50">
       <Button onClick={() => setIsOpen(!isOpen)}>Secret Menu</Button>
       {isOpen && (
-        <div className="mt-4 p-4 bg-white rounded shadow-lg w-64">
+        <div className="mt-4 p-4 bg-white bg-opacity-50 backdrop-blur-md rounded shadow-lg w-64">
           <Label htmlFor="background-upload" className="block mb-1">Background Image</Label>
           <Input id="background-upload" type="file" onChange={(e) => handleUpload(e, 'background')} accept="image/*" className="mb-2" />
           

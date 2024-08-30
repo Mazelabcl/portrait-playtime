@@ -23,10 +23,19 @@ const UI4 = ({ assets }) => {
 
   return (
     <div className="relative w-[1080px] h-[1920px]" style={{ backgroundImage: `url(${assets.backgroundImage})`, backgroundSize: 'cover' }}>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4">
+      <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3/4">
         <p className="text-2xl text-white text-center mb-4">Generating image...</p>
         <Progress value={progress} className="w-full" />
       </div>
+      {assets.video && (
+        <video 
+          className="absolute bottom-1/4 left-1/2 transform -translate-x-1/2 w-3/4 h-auto"
+          src={assets.video}
+          autoPlay
+          loop
+          muted
+        />
+      )}
     </div>
   );
 };
