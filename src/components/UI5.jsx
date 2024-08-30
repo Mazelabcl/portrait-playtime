@@ -8,18 +8,13 @@ const UI5 = ({ assets }) => {
   const [showImage, setShowImage] = useState(false);
 
   useEffect(() => {
-    const img1 = new Image();
-    const img2 = new Image();
-    img1.src = assets.generatedImage || '/placeholder.svg';
-    img2.src = assets.generatedImage2 || '/placeholder.svg';
-    Promise.all([
-      new Promise(resolve => img1.onload = resolve),
-      new Promise(resolve => img2.onload = resolve)
-    ]).then(() => {
+    const img = new Image();
+    img.src = assets.generatedImage || '/placeholder.svg';
+    img.onload = () => {
       setIsImageLoaded(true);
       setTimeout(() => setShowImage(true), 500);
-    });
-  }, [assets.generatedImage, assets.generatedImage2]);
+    };
+  }, [assets.generatedImage]);
 
   const handleClick = () => {
     setShowImage(false);
@@ -41,51 +36,38 @@ const UI5 = ({ assets }) => {
       <AnimatePresence>
         {showImage && (
           <motion.div
-            key="images"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            key="image"
+            initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            exit={{ 
+              opacity: 0, 
+              scale: 1.2, 
+              rotate: 10, 
+              filter: 'blur(20px)',
+              transition: { duration: 1, ease: "easeInOut" }
+            }}
+            transition={{ duration: 0.5, type: "spring", stiffness: 200, damping: 20 }}
             className="absolute inset-0 flex items-center justify-center"
           >
             <motion.div 
-              className="w-3/4 h-3/4 relative"
-              initial={{ y: 50, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              className="w-3/4 h-3/4 rounded-lg overflow-hidden shadow-2xl relative"
+              whileHover={{ scale: 1.05, rotate: 5 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <motion.div 
-                className="absolute top-0 left-0 w-full h-full rounded-lg overflow-hidden shadow-2xl"
-                style={{ zIndex: 2 }}
-                whileHover={{ scale: 1.05, rotate: 5, zIndex: 3 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              >
-                <motion.div className="absolute inset-0 bg-black opacity-30" />
-                <motion.img 
-                  src={assets.generatedImage || '/placeholder.svg'}
-                  alt="Generated Image 1" 
-                  className="w-full h-full object-cover"
-                  initial={{ filter: 'blur(10px)' }}
-                  animate={{ filter: 'blur(0px)' }}
-                  transition={{ duration: 0.5 }}
-                />
-              </motion.div>
-              <motion.div 
-                className="absolute top-10 left-10 w-full h-full rounded-lg overflow-hidden shadow-2xl"
-                style={{ zIndex: 1 }}
-                whileHover={{ scale: 1.05, rotate: -5, zIndex: 3 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              >
-                <motion.div className="absolute inset-0 bg-black opacity-30" />
-                <motion.img 
-                  src={assets.generatedImage2 || '/placeholder.svg'}
-                  alt="Generated Image 2" 
-                  className="w-full h-full object-cover"
-                  initial={{ filter: 'blur(10px)' }}
-                  animate={{ filter: 'blur(0px)' }}
-                  transition={{ duration: 0.5 }}
-                />
-              </motion.div>
+                className="absolute inset-0 bg-black"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.3 }}
+                transition={{ duration: 0.3 }}
+              />
+              <motion.img 
+                src={assets.generatedImage || '/placeholder.svg'}
+                alt="Generated Image" 
+                className="w-full h-full object-cover"
+                initial={{ filter: 'blur(10px)' }}
+                animate={{ filter: 'blur(0px)' }}
+                transition={{ duration: 0.5 }}
+              />
             </motion.div>
           </motion.div>
         )}

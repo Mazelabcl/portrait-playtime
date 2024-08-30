@@ -33,10 +33,11 @@ const UI1 = ({ assets, setAssets }) => {
             repeat: Infinity,
             repeatType: 'loop'
           }}
+          className="rounded-full overflow-hidden"
         >
           <Button
             onClick={() => navigate('/ui2')}
-            className="w-[400px] h-[200px] text-4xl font-bold text-blue-900 bg-white hover:bg-blue-100 transition-colors duration-300 rounded-full"
+            className="w-[400px] h-[200px] text-4xl font-bold text-blue-900 bg-white hover:bg-blue-100 transition-colors duration-300"
           >
             INICIAR
           </Button>
