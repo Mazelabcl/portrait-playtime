@@ -24,7 +24,7 @@ const UI2 = ({ assets }) => {
     >
       {assets.video && (
         <motion.video 
-          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-[56.25%] h-auto"
+          className="absolute bottom-1/4 left-1/2 transform -translate-x-1/2 w-[75%] h-auto"
           src={assets.video}
           autoPlay
           loop
@@ -32,8 +32,8 @@ const UI2 = ({ assets }) => {
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           style={{
-            boxShadow: '0 -4px 6px rgba(0, 0, 0, 0.1)',
-            borderRadius: '16px',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+            borderRadius: '24px',
           }}
         />
       )}

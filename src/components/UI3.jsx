@@ -24,7 +24,7 @@ const UI3 = ({ assets }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold text-white text-center px-4 py-2 bg-black bg-opacity-50 rounded-lg"
+          className="text-3xl font-bold text-white text-center p-[60px] bg-black bg-opacity-50 rounded-lg max-w-[80%]"
         >
           {assets.pregunta || "No question set"}
         </motion.div>
