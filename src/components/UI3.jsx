@@ -25,15 +25,21 @@ const UI3 = ({ assets }) => {
           animate={isRecording ? { scale: [1, 1.1, 1], transition: { repeat: Infinity, duration: 1 } } : {}}
         >
           <Button 
-            className="w-24 h-24 rounded-full bg-red-500 hover:bg-red-600" 
+            className="w-24 h-24 rounded-full bg-red-500 hover:bg-red-600 transition-all duration-300 shadow-lg hover:shadow-xl" 
             onClick={handleRecordClick}
+            style={{
+              boxShadow: isRecording ? '0 0 15px rgba(255, 0, 0, 0.7)' : 'none',
+            }}
           >
             <Mic className="w-12 h-12" />
           </Button>
         </motion.div>
-        <motion.div whileTap={{ scale: 0.9 }}>
+        <motion.div 
+          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
+        >
           <Button 
-            className="w-24 h-24 rounded-full bg-gray-500 hover:bg-gray-600" 
+            className="w-24 h-24 rounded-full bg-gray-500 hover:bg-gray-600 transition-all duration-300 shadow-lg hover:shadow-xl" 
             onClick={handleStopClick}
           >
             <Square className="w-12 h-12" />

@@ -16,10 +16,17 @@ const UI1 = ({ assets, setAssets }) => {
       <div className="absolute bottom-1/3 left-1/2 transform -translate-x-1/2">
         <Button 
           onClick={() => navigate('/ui2')} 
-          className="w-64 h-24 p-0 overflow-hidden rounded-lg text-white text-2xl font-bold"
-          style={{ backgroundImage: `url(${assets.buttonImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+          className="p-0 overflow-hidden rounded-lg text-white text-2xl font-bold transition-transform duration-300 hover:scale-105"
+          style={{ 
+            backgroundImage: `url(${assets.buttonImage})`, 
+            backgroundSize: 'cover', 
+            backgroundPosition: 'center',
+            width: '300px',
+            height: '100px',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+          }}
         >
-          INICIAR
+          <span className="bg-black bg-opacity-50 px-4 py-2 rounded">INICIAR</span>
         </Button>
       </div>
     </div>

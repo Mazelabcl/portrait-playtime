@@ -29,10 +29,15 @@ const UI4 = ({ assets }) => {
       </div>
       {assets.video && (
         <video 
-          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full h-auto"
+          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-auto"
           src={assets.video}
           autoPlay
           loop
+          style={{
+            boxShadow: '0 -4px 6px rgba(0, 0, 0, 0.1)',
+            borderTopLeftRadius: '16px',
+            borderTopRightRadius: '16px',
+          }}
         />
       )}
     </div>
