@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate,useLocation } from 'react-router-dom';
 
 const UI5 = ({ assets }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const imageUrl = location.state?.imageUrl;
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const [showImage, setShowImage] = useState(false);
 
   useEffect(() => {
     const img = new Image();
-    img.src = assets.generatedImage || '/placeholder.svg';
+    img.src = imageUrl || '/placeholder.svg';
     img.onload = () => {
       setIsImageLoaded(true);
       setTimeout(() => setShowImage(true), 500);
     };
-  }, [assets.generatedImage]);
+  }, [imageUrl]);
 
   const handleClick = () => {
     setShowImage(false);
@@ -61,7 +63,7 @@ const UI5 = ({ assets }) => {
                 transition={{ duration: 0.3 }}
               />
               <motion.img 
-                src={assets.generatedImage || '/placeholder.svg'}
+                src={imageUrl || '/placeholder.svg'}
                 alt="Generated Image" 
                 className="w-full h-full object-cover"
                 initial={{ filter: 'blur(10px)' }}

@@ -1,17 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Progress } from "@/components/ui/progress";
 
 const UI4 = ({ assets }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const videoRef = useRef(null);
+  const imageUrl = location.state?.imageUrl;  // Accede a la URL de la imagen
   const [showProgress, setShowProgress] = useState(false);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigate('/ui5');
+      navigate('/ui5', { state: { imageUrl: imageUrl } });
     }, 15000);
 
     return () => clearTimeout(timer);
